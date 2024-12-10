@@ -43,12 +43,25 @@ app.delete("/pets/:petId", async (req, res) => {
   res.json(deletedPet);
 });
 
+
+app.delete('/pets/:petId', async (req,res) => {
+    const deletedPet = await Pet.findByIdAndDelete(req.params.petId)
+    res.json(deletedPet)
+})
+
+app.get('/pets/:petId', async(req,res) => {
+    const updatedPet = await Pet.findById(req.params.petId)
+    res.render('show.ejs', {updatedPet: updatedPet})
+})
+
+
 app.put("/pets/:petId", async (req, res) => {
   const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
     new: true,
   });
   res.json(updatedPet);
 });
+
 
 app.listen(3001, () => {
   console.log("The Express app is ready");
