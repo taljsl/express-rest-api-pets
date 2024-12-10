@@ -21,9 +21,9 @@ app.use (express.json())
 app.use(cors());
 
 
-app.get('/', (req,res) => {
-    res.render
-}
+//// app.get('/pets', (req,res) => {
+// //    res.render
+// })
 
 
 app.get('/pets', async (req,res) => {
@@ -43,9 +43,9 @@ app.delete('/pets/:petId', async (req,res) => {
     res.json(deletedPet)
 })
 
-app.put('/pets/:petId', async(req,res) => {
+app.get('/pets/:petId', async(req,res) => {
     const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body,{new:true})
-    res.json(updatedPet)
+    res.render('show.ejs', {updatedPet: updatedPet})
 })
 
 
