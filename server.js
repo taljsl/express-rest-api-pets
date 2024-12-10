@@ -20,10 +20,9 @@ mongoose.connection.on('connected', () => {
 app.use (express.json())
 app.use(cors());
 
-
-app.get('/', (req,res) => {
-    res.render
-}
+// app.get("/", async (req, res) => {
+//     res.render("home.ejs");
+//   });
 
 
 app.get('/pets', async (req,res) => {
@@ -32,10 +31,9 @@ app.get('/pets', async (req,res) => {
 })
 
 
-app.post('/pets', async(req,res) => {
-    const createdPet = await Pet.create(req.body)
-    res.json(createdPet)
-})
+app.get("/new", (req, res) => {
+    res.render("new.ejs");
+  });  
 
 
 app.delete('/pets/:petId', async (req,res) => {
