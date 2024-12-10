@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <a href="/pets">View All</a>
-    <a href="/new">Create a new pet</a>
+    <h1>A list of pets</h1>
+<ul>
+    <%foundPets.forEach(pet => { %>
+        <li><%= pet.name %>: <%= pet.age %> years old. Breed: <%= pet.breed %></li>
+        <%})%>
+</ul>
+    
+        
+    
 </body>
 </html>
